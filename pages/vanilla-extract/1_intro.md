@@ -2,7 +2,7 @@
 <img src="/assets/vanilla-extract.png" />
 
 <!--
-- What is typescript?
+- With that, let's look at vanilla-extract
 
 Docs site says:
 

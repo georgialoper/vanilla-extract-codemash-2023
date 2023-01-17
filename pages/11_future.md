@@ -16,7 +16,7 @@ https://github.com/vanilla-extract-css/vanilla-extract/pull/942
 
  <!-- There is a very interesting PR against vanilla-extract that enables doing this for their Vite plugin, hopefully this can be adopted soon and rolled out to all their plugins.
 
- For now, the solution is to be discerning about what properties, values, and conditions you use to create Atomic CSS classes with createSprinkles.
+ For now, the solution is to be discerning about what properties, values, and conditions you use to generate Atomic CSS classes with createSprinkles.
  -->
 
 ---
@@ -32,7 +32,7 @@ https://github.com/vanilla-extract-css/vanilla-extract/pull/942
  
  Component-specific styles from .css.ts files that are imported into your components are still tree-shaken when a given component is not used on the page.
 
- I use multiple defineProperties functions to prevent creating extract classes for properties that don't change across conditions -->
+ I use multiple defineProperties functions to prevent creating atomic classes at every breakpoint for properties that don't change across conditions -->
 
 ---
 
@@ -41,7 +41,7 @@ https://github.com/vanilla-extract-css/vanilla-extract/pull/942
  - Atomic classes purging
  - Dynamic inline style assignments
 
-<!-- Vanilla extract sprinkles don't provide a way to do dynamic inline style assignments. So if you're familiar with Tailwind, you know it has this special syntax that allows you to supply any value so properties that might not be thoroughly tokenized in their atomic css system, like width or height -->
+<!-- Vanilla extract sprinkles doesn't provide a way to do dynamic inline style assignments. So if you're familiar with Tailwind, you know it has this special syntax that allows you to supply any value to properties that might not be thoroughly tokenized in their atomic css system, like width or height -->
 
 ---
 

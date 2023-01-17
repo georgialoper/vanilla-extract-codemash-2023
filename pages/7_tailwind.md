@@ -13,13 +13,12 @@ Okay, let's talk about Atomic CSS.
  - Classes are composed together in markup
 
 <!--
-Not to be confused with atomic design, atomic CSS as an approach to CSS where one class styles very few, usually one, CSS property.
+Not to be confused with atomic design, atomic CSS as an approach to CSS where one class styles very few, usually one, CSS properties.
 
 These single purpose CSS classes are then composed together in the markup in order to supply all the requisite styles for the element.
 
-Tailwind is the dominant framework following this approach, but there are many other similar frameworks out there. Tachyons was popular for a while. Bootstrap provides quite a lot of atomic CSS classes, but does not lean into it quite like Tailwind. 
-
-I've authored custom-implemented atomic CSS in a number of applications, and I'm sure you've at least worked in an application with atomic CSS to some degree.
+Like I said, there are many frameworks and in-house solutions that would be considered atomic CSS. but
+Tailwind is the dominant framework following this approach, so the examples we look at today will be using tailwind.
 -->
 
 ---
@@ -35,7 +34,7 @@ export const Heading = ({ children }) => (
 ```
 
 <!--
- This is what a static example of our heading component might look like if we fully lean into tailwind
+ This is what a static example of our heading component might look like
 
  click
 
@@ -86,7 +85,7 @@ export const Heading = ({ children }) => (
 }
 ```
 
-<!-- It might even support theming using some CSS variables -->
+<!-- It might even be setup to support theming using CSS variables -->
 
 ---
 
@@ -117,11 +116,11 @@ We'll go ahead and expose those on our component.
 
 click
 
-Then, since we're combining a number of classes, we'll likely pull in a classnames library.
+Then, since we're combining a number of classes, we'll likely pull in a classnames library. Probably not super necessary for this example, but this would definetly be useful for elements that need more properties styled.
 
 click
 
-We'll use that to bind together some classnames, but unless we expect the consumer of this component to pass in the atomic CSS class. We'll have to map the tokens we want to expose to the actual classes.
+We'll use that to bind together our classnames. Now unless we expect the consumer of this component to pass in the actual atomic CSS classes as props. We'll have to map the tokens we want to expose to the actual underlying classes.
 -->
 
 ---
@@ -146,11 +145,11 @@ const spaceMap = {
 ```
 
 <!--
-So now even if we're using a framework to provide a lot of our classes, we're still maintaining all these maps.
+So now even if we're using a framework to provide all our classes, we're still maintaining all these maps.
 
 This might be more or less maintainable depending on how many tokens you have. 
 
-I know Tailwind's framework have IDE integrations that might be helpful for remembering classes there are or generating these maps, but you can't actually use that information from the IDE in code to keep these maps in sync with what classes actually exist.
+I know Tailwind has IDE integrations that might be helpful for remembering what classes there are or generating these maps, but you can't actually use that information from the IDE in code to keep these maps in sync with what classes actually exist.
 -->
 
 ---
@@ -169,15 +168,15 @@ layout: two-cols
 
 <!-- 
 pros of atomic CSS 
-- Reusable CSS helps keep bundle size small
-  - define all the things once, use everywhere
+- Finite amount of CSS in your app
+  - define all the things once, reusing  everywhere
 	- Author less custom CSS
 	- Don’t have to invent classnames
-- Performant Static Stylesheet
-  - purge CSS
-- Don't need a library that runs in the browser
-- Make safer changes
-  - can you actually?
+- Performance benefits of a Static Stylesheet
+  - Additionally, Tailwind offers a purge CSS build plugin will remove all classes from your static CSS that aren't used in your page or app
+- Bundle size: Don't need to send down a library that runs stuff in the browser
+- Some claim tailwind allows you to make changes more safely, since following this approach you should you change your markup rather than touching your CSS
+  - I'm not convinced that's a legit point. That's a much larger refactor that I'd hope to take on when I have tokenized CSS 
 -->
 
 ---
@@ -198,10 +197,10 @@ layout: two-cols
 
 cons
 - Global scope
-	- Both you and your cookie script are both using differently themed versions of tailwind.
+	- Not hashed. If both you and your injected cookie consent UI are both using differently overlapping atomic CSS classes. 
 - Mental overhead
 - DevX
   - lots to maintain to be able to use of props & state for styling
   - IDE plugins and linters can make it feel type safety, but there’s no way to actually use those types in code
-	- Can become unreadable when lots of classes are applied (I don't think this is actually a problem in the browser, but can be in reviewing code)
+	- Can become unreadable when lots of classes are applied (I don't think this is actually a problem in the browser, just some strong opinions)
 -->

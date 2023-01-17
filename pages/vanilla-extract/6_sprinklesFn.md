@@ -27,7 +27,7 @@ layout: two-cols
 
 ---
 
-```ts {all|2|5|6-10|11|3|12-16|19}
+```ts {all|2|5|6-10|11|3|12-16|19|6-16}
 // sprinkles.css.ts
 import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 import { vars } from "./theme.css";
@@ -64,9 +64,11 @@ I might also use these conditions to define contrast mode queries for light and 
 
 then I'll import my vars
 
-use the vars in this properties object where we'll assign our vars to every CSS property we'd like to style.
+use the vars in this properties object where we'll assign our vars to every CSS property for which we'd like to generate an atomic CSS class.
 
-then we'll create a sprinklesFn assigned to the createSprinkles function which accepts our properties const
+then we'll create a sprinklesFn assigned to the createSprinkles function which accepts our properties
+
+Which is a little convoluted all we really need to focus on in here is defining our properties
  -->
 
 ---
@@ -79,10 +81,10 @@ then we'll create a sprinklesFn assigned to the createSprinkles function which a
   color: var(--color-secondary__asdfg1)
 }
 .sprinkles_background_primary_mobile__asdfg0 {
-  background-color: var(--color-primary__asdfg2)
+  background: var(--color-primary__asdfg2)
 }
 .sprinkles_background_secondary_mobile__asdfg0 {
-  background-color: var(--color-secondary__asdfg3)
+  background: var(--color-secondary__asdfg3)
 }
 .sprinkles_space_s_mobile__asdfg0 {
   padding: var(--space-s__asdfg4)
@@ -97,7 +99,7 @@ then we'll create a sprinklesFn assigned to the createSprinkles function which a
 
 <!-- 
 This is the CSS output, again it's a css.ts file so this will be static CSS created at build time.
-You can see we have a class for every vars token for every property we defined in our properties object, so we effectively have Atomic CSS classes
+You can see we have a class for every vars token for every property we defined in that properties key, so we effectively have Atomic CSS classes
 
 We have our color atomic classes
 
@@ -121,10 +123,10 @@ notice that these class names follow the pattern of filename, property name, tok
   color: var(--color-secondary__asdfg1)
 }
 .sprinkles_background_primary_tablet__asdfg0 {
-  background-color: var(--color-primary__asdfg2)
+  background: var(--color-primary__asdfg2)
 }
 .sprinkles_background_secondary_tablet__asdfg0 {
-  background-color: var(--color-secondary__asdfg3)
+  background: var(--color-secondary__asdfg3)
 }
 .sprinkles_space_s_tablet__asdfg0 {
   padding: var(--space-s__asdfg4)
@@ -151,10 +153,10 @@ notice that these class names follow the pattern of filename, property name, tok
   color: var(--color-secondary__asdfg1)
 }
 .sprinkles_background_primary_desktop__asdfg0 {
-  background-color: var(--color-primary__asdfg2)
+  background: var(--color-primary__asdfg2)
 }
 .sprinkles_background_secondary_desktop__asdfg0 {
-  background-color: var(--color-secondary__asdfg3)
+  background: var(--color-secondary__asdfg3)
 }
 .sprinkles_space_s_desktop__asdfg0 {
   padding: var(--space-s__asdfg4)
@@ -171,6 +173,8 @@ notice that these class names follow the pattern of filename, property name, tok
 <!--
 
 And a set of classes scoped to the desktop breakpoint
+
+click
 
 One thing that's not very atomic in that these spacing atomic classes are just targetting the padding property, so all sides of the element will receive padding,
 
@@ -205,7 +209,7 @@ export const sprinklesFn = createSprinkles(properties);
 
 <!-- so let's actually go back to our properties and instead of just supplying our space to padding, generally, we'll supply space to each side individually.
 
-Then we can use this shorthands object to create shorthands that will compose together the classes we define in the corresponding array.
+Then we can use this shorthands key to create shorthands that will compose together the classes for the properties we define in the corresponding array.
 
 Padding 
 
@@ -226,7 +230,9 @@ export const root = style({
 })
 ```
 
-<!-- let's go back to the basic version of our heading.css.ts file using the styles function. Instead of using our vars... -->
+<!-- let's go back to the basic version of our heading.css.ts file using the styles function.
+
+Instead of using our vars... -->
 
 ---
 
@@ -249,16 +255,16 @@ we can import our sprinklesfn
 
 instead of passing some representative CSS object to our style functionwe'll supply an array to the style function. 
 
-Inside that array we'll supply an object to our sprinkles function that contains each property we want to style, but instead of specifying a hardcoded value or our vars to that property, we can pass a key from the object in our vars that we specified for that property in our properties.
+Inside that array we'll supply an object to our sprinkles function that contains each property we want to style, but instead of specifying a hardcoded value or our vars to that property, we can pass a key from the object in our vars that we specified for that property in our properties key.
 
-So, we said background and color can take vars.color, so those properties can accept our primary or secondary keys
+So, when we defined our properties we said background and color can take vars.color, so those properties can accept our primary or secondary keys
 -->
 
 ---
 
 ```css {all|1-6|7-20}
 .sprinkles_background_primary_mobile__asdfg6 {
-    background-color: var(--color-primary__asdfg1);
+    background: var(--color-primary__asdfg1);
 }
 .sprinkles_color_secondary_mobile__asdfg3 {
     color: var(--color-secondary__asdfg2);
@@ -301,7 +307,7 @@ export const variants = style([
 
 ```css {6-14}
 .sprinkles_background_primary_mobile__asdfg6 {
-    background-color: var(--color-primary__asdfg1);
+    background: var(--color-primary__asdfg1);
 }
 .sprinkles_color_secondary_mobile__asdfg3 {
     color: var(--color-secondary__asdfg2);
@@ -342,7 +348,7 @@ export const variants = style([
 
 ```css {all|7-9|10-14|15-19|all}
 .sprinkles_background_primary_mobile__asdfg6 {
-  background-color: var(--color-primary__asdfg1);
+  background: var(--color-primary__asdfg1);
 }
 .sprinkles_color_secondary_mobile__asdfg3 {
   color: var(--color-secondary__asdfg2);
@@ -363,6 +369,8 @@ export const variants = style([
 ```
 
 <!--
+here's those classes 
+
 mobile
 
 tablet
@@ -394,7 +402,7 @@ export const Heading = ({ children }) => (
 <!-- 
 so instead of defining our heading styles in our .css.ts file at build time, we can actually go and call our sprinkles function in our heading component to compose our styles at no runtime cost.
 
-Since the classes already exist, only the lockup needs to happen at runtime.
+Since the atomic classes already exist and are there in the browser, only the lockup needs to happen at runtime.
 
 so we can import our sprinkles fn
 
@@ -458,7 +466,10 @@ export const Heading = ({ background, color, padding, children }: HeadingProps) 
 ```
 
 <!-- 
-Then we can import that type into our heading component
+
+then we can go back to our heading component
+
+import that Sprinkles type
 
 use it to type all the properties we want our parent component to be able to style via props, being background, color, and padding,
 
@@ -466,7 +477,9 @@ use that heading props type to and surface those props on our component
 
 then we can pass those props right on through to the object we're supplying our sprinkles fn
 
-So now we have this component that has typed all it's props that can be passed from a parent component which will stay in sync with the styles we're creating atomic classes for in our sprinkles and these classes will be reused by any component that uses this sprinkles function
+em
+
+So now we have this component. that has strongly typed all it's props that can be passed from a parent component. which will stay in sync with the styles we're creating atomic classes for in our sprinkles. and these classes will be reused by any component that uses this sprinkles function
 
 One thing that I'm not crazy about is now our component code is pretty tightly coupled to our styles implementation. What can be done about that?
 -->

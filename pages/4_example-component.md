@@ -48,7 +48,9 @@ Static
 </Heading>
 ```
 <!-- 
-We'll encapsulate all this into a Heading component which we will use in our parent component, in this case app.tsx, like this with no additional props. -->
+We'll encapsulate all this into a Heading component. 
+
+which we will use in our parent component, in this case app.tsx, like this with no additional props. -->
 
 ---
 
@@ -73,7 +75,7 @@ Themed
 
 ```css
 {
-  background-color: var(--color-primary);
+  background: var(--color-primary);
   color: var(--color-secondary);
   padding: var(--space-small);
 }
@@ -85,4 +87,10 @@ Themed
 }
 ```
 
-<!-- Finally, since the design system I work on supports theming. Not just a handful of themes, but dozens or hundreds of themes, we'll also look for a solution that uses CSS variables so we can swap out our theme at runtime to make sure we're not sending a bunch of extra CSS down to the browser. -->
+<!--
+
+Finally, since the design system I work on supports theming. Not just a handful of themes, but dozens or hundreds of themes, we'll also look for a solution that uses CSS variables so we can swap out our theme at runtime to make sure we're not sending a bunch of extra CSS down to the browser.
+
+Note that the examples we look at today will be in React, but the same concepts apply regardless of whatever component-driven JS library you use.
+-->
+

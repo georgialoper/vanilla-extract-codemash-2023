@@ -135,7 +135,9 @@ replace our root div with our Box component and supply our background color and 
 
 So now we have completely abstracted our style implementation away from our heading component, and we have this utility Box component we can use to bind our styles implementation with all our components.
 
-So, hypothetically, mui and chakra can rip out their runtime CSS-in-JS styles and replace it with vanilla-extract without touching any their components expect for their Box component.
+Note that this isn't really specific to vanilla-extract.
+
+So, hypothetically, with this pattern, mui and chakra can rip out their runtime CSS-in-JS styles and replace it with vanilla-extract without touching any their components expect for their Box component.
 -->
 
 ---
@@ -143,6 +145,8 @@ So, hypothetically, mui and chakra can rip out their runtime CSS-in-JS styles an
 <img src="/assets/ve-dessert-box.png" />
 
 <!--
+
+With vanilla-extract, if you want to follow this pattern
 You don't even need to write your own box component, there's this cool dessert-box project that'll do all this for you.
 https://github.com/TheMightyPenguin/dessert-box
 -->

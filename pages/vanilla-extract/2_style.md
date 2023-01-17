@@ -22,7 +22,9 @@ export const root = style({
 ```
 
 <!-- 
-First, we'll create a Heading in a Heading.css.ts file that lives next to our Heading component.
+First, we'll create a  Heading.css.ts file that lives next to our Heading component.
+
+click
 
 The .css.ts extension is really important in vanilla-extract. It is what tells vanilla extract build plugin to build these typescript files into static CSS which will be sent as CSS to the browser.
 
@@ -98,7 +100,7 @@ Notice this looks exactly like CSS modules. The creators are the same.
 
 ---
 
-```tsx {3,6}
+```tsx {3|6}
 // ./components/Heading.tsx
 import React from 'react'
 import { root } from './Heading.css'
@@ -110,7 +112,7 @@ export const Heading = ({ children }) => (
 )
 ```
 
-<!-- We can alternatively destructure our root in our import 
+<!-- Just like CSS-modules , we can alternatively destructure our root class in our import 
 
 click 
 
@@ -137,7 +139,7 @@ class: 'p-4'
 
 ```css
 .Heading_root_asdfg0 {
-  background-color: "navy";
+  background: "navy";
   color: "plum";
   padding: "1rem";
 }
@@ -149,7 +151,7 @@ class: 'p-4'
 
 ```css
 ._asdfg0 {
-  background-color: "navy";
+  background: "navy";
   color: "plum";
   padding: "1rem";
 }
@@ -200,9 +202,11 @@ export const root = style({
 <!--
 If you want to target any more complex selectors or pseudo selectors, you need use this kind of selectors object.
 
-Not that, To improve maintainability, each style block can only target a single element. To enforce this, all selectors must target the & character which is a reference to the current element.
+Note that, To improve maintainability, each style block can only target a single element. To enforce this, all selectors must start with the & character which is a reference to the current element.
 
 Selectors can also reference other scoped class names, but selectors attempting to target an element other than the current class are invalid.
+
+click
 
 So, vanilla-extract can be pretty opinionated, but overall I find that it helps me author maintainable CSS without personally needing the experience or the foresight to make that judgement myself.
 -->

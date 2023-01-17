@@ -3,8 +3,9 @@
 
 <!--
 
-So what approaches are we going to be evaluating today
-The State of CSS 2022 was releases maybe a few weeks or months ago now and they largely break down today's approaches to styling to 2 broad categories.
+So what approaches are we going to be evaluating today?
+
+The State of CSS 2022 was released maybe a few weeks or months ago now and they largely break down today's approaches to styling to 2 broad categories.
 
  - CSS Frameworks
  - CSS-in-JS
@@ -14,7 +15,7 @@ The State of CSS 2022 was releases maybe a few weeks or months ago now and they 
 
 <img src="/assets/tsocss-css-frameworks.png" />
 
-<!-- There's a lot of CSS frameworks out there, most of them are opinionated about their design but my offer some degree of customization. Bootstrap remains ever present. -->
+<!-- There's a lot of CSS frameworks out there, most of them are opinionated about their design but may offer some degree of customization. Bootstrap remains ever present. -->
 
 ---
 
@@ -23,13 +24,15 @@ The State of CSS 2022 was releases maybe a few weeks or months ago now and they 
 <!--
 
 but far and away the most popular framework right now is Tailwind.
-But tailwind is really just a flavor of Atomic CSS.
+Now tailwind is really just a flavor of Atomic CSS.
 
 Atomic CSS for the most part is where 1 class applies styles to exactly one CSS property.
 
-Tachyons follows the same concept. If you've every tried to apply margins or paddings in Bootstrap or Bulma you've used atomic CSS to some degree. You've probably authored some atomic CSS in your application or used atomic CSS classes authored by someone on your team.
+Tachyons follows the same concept. If you've every tried to apply margins or paddings in Bootstrap or Bulma you've used atomic CSS to some degree.
 
-So we'll take a look at Atomic CSS generally. 
+You've probably even authored some atomic CSS in your application or used atomic CSS classes authored by someone on your team.
+
+So today we'll take a look at Atomic CSS generally. 
 -->
 
 ---
@@ -48,8 +51,8 @@ There's a lot of frameworks and libraries in this category that take very differ
 
 <!--
 
-The most dominant approach to CSS-in-JS is far and away CSS-modules. In fact, it is so popular it ships out of the box with NextJs.
+The most dominant approach to CSS-in-JS is far and away CSS-modules. In fact, it is so popular it ships out of the box with NextJs and I believe Remix just added this as well.
 
-Most of these libraries outside of CSS-modules are what you might consider Runtime CSS-in-JS, which is a large umbrella, so let's dig into that first.
+Most of these libraries outside of vanilla-extract and CSS-modules are what we'll call Runtime CSS-in-JS, which is a large umbrella, so let's dig into that first.
 
 -->

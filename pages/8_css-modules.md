@@ -11,7 +11,7 @@
 
 <!--
 Written like normal CSS but is actually build time CSS in JS.
-The advantage of this is that it can be imported as a module into components and use a build step to scope those specifically to that component -->
+The advantage of this is that it can be imported as a module into your components and it uses a build step to scope your styles specifically to that component -->
 
 ---
 
@@ -111,9 +111,9 @@ layout: two-cols
 <!--
 
 cons
-- No great path forward to use props & state for styling in a way that’s reusable
+- DevX - No great path forward to use props & state for styling in a way that’s reusable
   - often end up recreating globally-scoped atomic CSS
-- Even scss compiles down to the values, does not readily support runtime theming
+- Doesn't readily support Runtime theming: Even scss compiles down to the values
   - have to create my own css variable layer in my sass token layer
 - no type safety
 -->

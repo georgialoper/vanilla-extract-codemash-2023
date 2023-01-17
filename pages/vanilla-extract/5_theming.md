@@ -37,11 +37,11 @@ click
 
 then I'll export a const called vars, which is sort of an arbitrary name, but one that has taken hold in the vanilla-extract community as short for an object that maps to a set of CSS-variables, which is what this createGlobalTheme function will return.
 
-First we'll supply an element to assign those CSS variables against, it's common to use the root element.
+First param will be an element to define those CSS variables on, it's common to use the root element.
 
 click 
 
-then we'll define our object structure. This is also relatively arbitrary, but for organization, we'll define a color key with an object containing all the tokens we want to use and the value those tokens should map to.
+then we'll define our vars object structure. This is also relatively arbitrary, but for organization, we'll define a color key with an object containing all the tokens we want to use as keys and the value those tokens should map to.
 
 click
 
@@ -62,6 +62,7 @@ we'll do the same for our spacing tokens and values -->
 <!-- Here is the generated CSS. You can see it's a bunch of CSS variables on the root element. These variables are all hashed and in dev builds the name of the tokens will follow the structure of the keys in the object we supplied.
 
 click
+
 you can see we have our 2 CSS variables for each of our navy and plum color
 
 click
@@ -179,7 +180,7 @@ export const vars = createGlobalTheme(":root", {
 <img src="/assets/ve-createtheme.png" />
 
 <!--
-They also have create theme, which uses the vars structure you supply to define a theme contract all the other themes have to adhere to.
+They also have create theme, which uses the vars structure you supply to define a theme contract all the other themes have to adhere to, enforced by TS
 
 It also returns a generated root class for each theme, so you can swap between themes by swapping that class 
 -->
@@ -189,19 +190,18 @@ It also returns a generated root class for each theme, so you can swap between t
 <img src="/assets/ve-dynamic.png" />
 
 <!--
-There's also this dynamic library that allows you to swap values to the "vars" CSS variables at runtime
+There's also this dynamic library that allows you to swap values assigned to the "vars" CSS variables at runtime
 -->
 
 ---
 
-```tsx {1-2|3|7|8-18|all}
+```tsx {1-2|3|7-17|all}
 // app.tsx
 import { assignInlineVars } from '@vanilla-extract/dynamic'
-import { baseThemeClass, vars } from '@styles/theme.css.ts'
+import { vars } from '@styles/theme.css.ts'
 
 export const App = () => (
   <div
-    className={baseThemeClass}
     style={assignInlineVars(vars, {
       color: {
         primary: "aqua",
@@ -220,15 +220,11 @@ export const App = () => (
 ```
 
 <!--
-Basically this allows you to import assignInline vars from vanilla-extract
+Basically this allows you to import assignInline vars from vanilla-extract dynamic package
 
 click
 
-import your root theme class and your vars from your theme file
-
-click
-
-apply your root theme class to the root of your app
+import your vars from your theme file
 
 click
 
@@ -238,4 +234,4 @@ click
 
 super useful if you have to support dozens or hundreds of these where it's impractical to define all the themes at build time and ship them to the browser.
 
-Also useful for creating "preview" interfaces where components immediately change their appearance based on values input in the UI, such as Storybook controls or a theming admin dashboard. -->
+Also useful for creating "preview" interfaces where components immediately change their appearance based on values input in the client, such as a theming admin dashboard. -->

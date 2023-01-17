@@ -40,15 +40,15 @@ export const variants assigned to result of styleVariant function
 
 click
 
-supply a couple named objects - primary which will be an object representative of our base CSS
+supply a couple keys- primary which will be an object representative of our base CSS
 
 click
 
-then I'll supply a secondary named object which will supply the inverse background and color colors.
+then I'll supply a secondary key which will supply the inverse background and color values.
 
 click
 
-I can keep supplying named objects for any number of variants
+I can keep going for any number of variants
 -->
 
 ---
